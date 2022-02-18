@@ -3,6 +3,7 @@
 
 #include <SPI.h>
 #include <MFRC522.h>
+#include "webserver.h"
 
 #define RELAY D3
 #define BUZZER D2
@@ -25,6 +26,8 @@ class Board{
         SPI.begin();
         rfid.PCD_Init();
         delay(10);
+
+        WebServer::Setup();
     }
 
     class RFID{
@@ -48,7 +51,7 @@ class Board{
 
         static void Authenticate()
         {
-            Serial.println("[ Stand By ]");
+            Serial.println("[ Waiting for an answer ... ]");
             delay(1000);
 
             if(!rfid.PICC_IsNewCardPresent())

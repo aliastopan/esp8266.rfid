@@ -79,6 +79,9 @@ class Board{
 
             if(content.substring(1) == "C2 D6 F7 2C")
             {
+                String sensorReadings = WebServer::httpGETRequest(serverName);
+                Serial.println(sensorReadings);
+
                 Serial.println("Access Granted");
                 digitalWrite(RELAY, LOW);
                 digitalWrite(LED_BUILTIN, LOW);
